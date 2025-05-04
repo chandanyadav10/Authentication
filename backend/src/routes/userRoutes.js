@@ -1,6 +1,7 @@
 import express from "express";
 import { loginUser, registerUser, logoutUser , getUser, updateUser} from "../controllers/auth/userController.js";
-import { protect } from "../middlewares/authMiddleware.js";
+import { adminMiddleware, protect } from "../middlewares/authMiddleware.js";
+import { deleteUser } from "../controllers/auth/adminController.js";
 
 const router = express.Router();
 
@@ -9,5 +10,8 @@ router.post("/login",loginUser);
 router.get("/logout", logoutUser);
 router.get("/user", protect, getUser);
 router.patch("/user", protect, updateUser);
+
+// admin routes
+router.delete("/admin/user/:id",protect, adminMiddleware, deleteUser);
 
 export default router;
