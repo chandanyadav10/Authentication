@@ -43,11 +43,39 @@ export const protect = asyncHandler (async (req, res, next) => {
 
 // admin middleware
 export const adminMiddleware = asyncHandler (async (req, res, next) =>{
+    //if user is admin move to next middleware/controller
     if(req.user && req.user.role === "admin"){
         next();
-    }else{
-        res.status(401).json({
-            message: "permission insufficient"
-        })
+        return;
     }
+    //if user is not admin 
+    res.status(403).json({
+        message: "only admins can do this"
+    })
+})
+
+// creator middleware
+export const creatorMiddleware = asyncHandler (async (req, res, next) => {
+    // if user is creator move to next middleware/controller
+    if((req.user && req.user.role === "creator") && (req.user && req.user.role === "admin")){
+        next();
+        return;
+    }
+    // if user is not creator, send forbidden 403
+    res.status(403).json({
+        message: "only creators can do this"
+    })
+})
+
+// verified middleware
+export const verifiedMiddleware = asyncHandler (async (req, res, next) => {
+    // if user is verified move to next middleware/controller
+    if(req.user && req.user.isVerified){
+        next();
+        return;
+    }
+    // if user is not verified, send forbidden 403
+    res.status(403).json({
+        message: "please verify your email"
+    })
 })
