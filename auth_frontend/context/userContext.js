@@ -56,6 +56,34 @@ const registerUser = async (e) => {
     }
 }
 
+// login user
+const loginUser = async (e) => {
+    e.preventDefault();
+    try {
+        const res = await axios.post(`${serverUrl}/api/v1/login`, {
+            email: userState.email,
+            password: userState.password
+        },{
+            withCredentials: true
+        });
+
+        console.log(res);
+        toast.success("User logged in successfully !");
+
+        // clear the form
+        setUserState({
+            email: "",
+            password: "",
+        });
+        // redirect to home
+        router.push("/");
+        
+    } catch (error) {
+        console.log("Error logging in user",error);
+        toast.error("Error logging in user");
+        
+    }
+}
      // dynamic form handler
      const handlerUserInput = (name) => (e) => {
         const value = e.target.value;
@@ -66,7 +94,7 @@ const registerUser = async (e) => {
         }));
     }
     return (
-        <UserContext.Provider value={{registerUser, userState, handlerUserInput}}>
+        <UserContext.Provider value={{registerUser, userState, handlerUserInput, loginUser}}>
             {children}
         </UserContext.Provider>
     );
