@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import {UserContextProvider }from "../context/user.context";
+import {UserContextProvider }from "../context/userContext";
 
 interface Props {
     children: React.ReactNode;
