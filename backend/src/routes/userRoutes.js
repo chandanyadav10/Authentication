@@ -32,6 +32,10 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:resetPasswordToken", resetPassword);
 
 // change password
+<<<<<<< HEAD
 router.post("/change-password", protect, changePassword);
+=======
+router.patch("/change-password", protect, changePassword);
+>>>>>>> staging
 
 export default router;
