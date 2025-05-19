@@ -98,7 +98,7 @@ export default function Home() {
         <div className="flex-1">
           <ChangePasswordForm />
         </div>
-        <div className="flex-1 border-1 border-orange-500 p-4 rounded-md bg-gray-200  shadow-lg shadow-gray-300 ">
+        <div className="flex-1">
           {user.role === "admin" && (
             <ul>
               {allUsers.map(
@@ -106,7 +106,7 @@ export default function Home() {
                   user.role !== "admin" && (
                     <li
                       key={i}
-                      className="mb-2 px-2 py-3 bg-gray-50 border grid grid-cols-4 items-center gap-8 rounded-md shadow-lg shadow-inner"
+                      className="mb-2 px-2 py-3 bg-gray-50  grid grid-cols-4 items-center gap-8 rounded-md "
                     >
                       <img
                         src={user.photo}
