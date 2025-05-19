@@ -32,6 +32,6 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password/:resetPasswordToken", resetPassword);
 
 // change password
-router.post("/change-password", protect, changePassword);
+router.patch("/change-password", protect, changePassword);
 
 export default router;

@@ -64,7 +64,7 @@ function RegisterForm() {
           </button>
         </div>
         <div className="mt-[1rem] flex justify-end">
-          <a href="#" className="font-bold text-[#2ECC71] hover:text-[#7263F3] text-[14px]">Forgot password?</a>
+          <a href="/forgot-password" className="font-bold text-[#2ECC71] hover:text-[#7263F3] text-[14px]">Forgot password?</a>
         </div>
 
         <div className="flex">

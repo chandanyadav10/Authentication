@@ -239,7 +239,7 @@ export const verifyEmail = asyncHandler(async (req, res) => {
     }).save();
 
     // Verification link
-    const verificationLink = `${process.env.CLIENT_URL}/verify/${verificationToken}`;
+    const verificationLink = `${process.env.CLIENT_URL}/verify-email/${verificationToken}`;
 
     // send verification email
     const subject = "Email Verification";
